@@ -16,7 +16,7 @@ ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https
 # Change shell script
 defaults write io.github.norio-nomura.ExtraBuildPhase shellScript -string '
 if which swiftlint >/dev/null; then
-    swiftlint 2>/dev/null
+    swiftlint lint --config ~/.swiftlint.yml 2>/dev/null
 fi
 exit 0 # ignore result of swiftlint
 '
