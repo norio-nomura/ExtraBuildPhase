@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6CEA7CB01BEDD4B800E0CE79 /* ExtraBuildPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CEA7CAF1BEDD4B800E0CE79 /* ExtraBuildPhase.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6C233E1C1BEF24AB00D7C9D2 /* PBXTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXTarget.h; sourceTree = "<group>"; };
+		6CEA7CA51BEDD37300E0CE79 /* ExtraBuildPhase.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExtraBuildPhase.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CEA7CA81BEDD37300E0CE79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CEA7CAE1BEDD4B800E0CE79 /* ExtraBuildPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraBuildPhase.h; sourceTree = "<group>"; };
+		6CEA7CAF1BEDD4B800E0CE79 /* ExtraBuildPhase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraBuildPhase.m; sourceTree = "<group>"; };
+		6CF2F5B81BEF2F520041A643 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6CF2F5BA1BEF30CA0041A643 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6CF50AB91BEF148700604C02 /* PBXShellScriptBuildPhase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXShellScriptBuildPhase.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6CEA7CA21BEDD37300E0CE79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6CEA7C9C1BEDD37300E0CE79 = {
+			isa = PBXGroup;
+			children = (
+				6CF2F5BA1BEF30CA0041A643 /* README.md */,
+				6CF2F5B81BEF2F520041A643 /* LICENSE */,
+				6CEA7CA71BEDD37300E0CE79 /* ExtraBuildPhase */,
+				6CEA7CA61BEDD37300E0CE79 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6CEA7CA61BEDD37300E0CE79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CEA7CA51BEDD37300E0CE79 /* ExtraBuildPhase.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6CEA7CA71BEDD37300E0CE79 /* ExtraBuildPhase */ = {
+			isa = PBXGroup;
+			children = (
+				6CEA7CA81BEDD37300E0CE79 /* Info.plist */,
+				6CEA7CAE1BEDD4B800E0CE79 /* ExtraBuildPhase.h */,
+				6CEA7CAF1BEDD4B800E0CE79 /* ExtraBuildPhase.m */,
+				6CF50AB91BEF148700604C02 /* PBXShellScriptBuildPhase.h */,
+				6C233E1C1BEF24AB00D7C9D2 /* PBXTarget.h */,
+			);
+			path = ExtraBuildPhase;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6CEA7CA41BEDD37300E0CE79 /* ExtraBuildPhase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CEA7CAB1BEDD37300E0CE79 /* Build configuration list for PBXNativeTarget "ExtraBuildPhase" */;
+			buildPhases = (
+				6CEA7CA11BEDD37300E0CE79 /* Sources */,
+				6CEA7CA21BEDD37300E0CE79 /* Frameworks */,
+				6CEA7CA31BEDD37300E0CE79 /* Resources */,
+				6CF2F5BC1BEF3C7F0041A643 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExtraBuildPhase;
+			productName = ExtraBuildPhase;
+			productReference = 6CEA7CA51BEDD37300E0CE79 /* ExtraBuildPhase.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6CEA7C9D1BEDD37300E0CE79 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Norio Nomura";
+				TargetAttributes = {
+					6CEA7CA41BEDD37300E0CE79 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 6CEA7CA01BEDD37300E0CE79 /* Build configuration list for PBXProject "ExtraBuildPhase" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6CEA7C9C1BEDD37300E0CE79;
+			productRefGroup = 6CEA7CA61BEDD37300E0CE79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6CEA7CA41BEDD37300E0CE79 /* ExtraBuildPhase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6CEA7CA31BEDD37300E0CE79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CF2F5BC1BEF3C7F0041A643 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6CEA7CA11BEDD37300E0CE79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CEA7CB01BEDD4B800E0CE79 /* ExtraBuildPhase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6CEA7CA91BEDD37300E0CE79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6CEA7CAA1BEDD37300E0CE79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6CEA7CAC1BEDD37300E0CE79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = ExtraBuildPhase/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.ExtraBuildPhase";
+				PRODUCT_NAME = ExtraBuildPhase;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		6CEA7CAD1BEDD37300E0CE79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = ExtraBuildPhase/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.ExtraBuildPhase";
+				PRODUCT_NAME = ExtraBuildPhase;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6CEA7CA01BEDD37300E0CE79 /* Build configuration list for PBXProject "ExtraBuildPhase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CEA7CA91BEDD37300E0CE79 /* Debug */,
+				6CEA7CAA1BEDD37300E0CE79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CEA7CAB1BEDD37300E0CE79 /* Build configuration list for PBXNativeTarget "ExtraBuildPhase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CEA7CAC1BEDD37300E0CE79 /* Debug */,
+				6CEA7CAD1BEDD37300E0CE79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6CEA7C9D1BEDD37300E0CE79 /* Project object */;
+}
