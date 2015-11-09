@@ -8,6 +8,14 @@ ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https
 - [SwiftLint](https://github.com/realm/SwiftLint) for default shell script
 
 ## Installation
+
+### Use pre-built plugin
+1. Download [ExtraBuildPhase.xcplugin-0.1.zip](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.1/ExtraBuildPhase.xcplugin-0.1.zip)
+2. Unzip it
+3. Move `ExtraBuildPhase.xcplugin` to `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
+4. Restart Xcode
+
+### Build by yourself
 1. Build the Xcode project
 2. Restart Xcode
 
