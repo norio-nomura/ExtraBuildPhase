@@ -9,24 +9,24 @@ ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https
 
 ## Installation
 
-### Use Homebrew-Cask
-1. Install [Homebrew-Cask](http://caskroom.io)
-2. run `brew cask install extrabuildphase` on CLI
-3. Restart Xcode
+Xcode Plug-ins Locations are following:
+- Local System: `/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
+- User Home: `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
 
-*This method installs the plug-in at `/Library/Application Support/Developer/Shared/Xcode/Plug-ins`*
+### Using Installers
+- Installer package (Local System): [ExtraBuildPhase-0.2.pkg](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.2/ExtraBuildPhase-0.2.pkg)
+- [Homebrew-Cask](http://caskroom.io) (Local System): `brew cask install extrabuildphase`
+- [Alcatraz](http://alcatraz.io) (*User Home*)
 
-### Use pre-built plugin
+### Manual Install
 1. Download [ExtraBuildPhase.xcplugin-0.2.zip](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.2/ExtraBuildPhase.xcplugin-0.2.zip)
 2. Unzip it
-3. Move `ExtraBuildPhase.xcplugin` to `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
-4. Restart Xcode
+3. Copy `ExtraBuildPhase.xcplugin` to one of Xcode Plug-ins Location
 
-### Build by yourself
-1. Build the Xcode project
-2. Restart Xcode
+### Build By Yourself
+1. Building the project by Xcode will install the plugin. (to User Home)
 
-*This method installs the plug-in at `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`*
+Restart Xcode after installing
 
 ## Configuration
 ```sh
