@@ -44,9 +44,9 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     NSArray *result = [self _ExtraBuildPhase_buildPhases];
     
     if (_ExtraBuildPhase_in_createDependencyGraphSnapshot) {
-        NSString *identifier = [[NSBundle bundleForClass: [ExtraBuildPhase class]]bundleIdentifier];
+        NSString *identifier = [[NSBundle bundleForClass:[ExtraBuildPhase class]]bundleIdentifier];
         
-        NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName: identifier];
+        NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:identifier];
         NSString *shellScript = [defaults stringForKey:@"shellScript"];
         if (!shellScript) {
             shellScript = @"if which swiftlint >/dev/null; then\n"
@@ -54,13 +54,13 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
             "fi\n"
             "exit 0 # ignore result of swiftlint";
         }
-        BOOL showEnvVarsInLog = [defaults boolForKey: @"showEnvVarsInLog"];
+        BOOL showEnvVarsInLog = [defaults boolForKey:@"showEnvVarsInLog"];
         
         Class buildPhaseClass = objc_getClass("PBXShellScriptBuildPhase");
-        BuildPhase buildPhase = [(BuildPhase)[buildPhaseClass alloc] initWithName: @"Run SwiftLint"];
-        [buildPhase setShowEnvVarsInLog: showEnvVarsInLog];
-        [buildPhase setShellPath: @"/bin/sh"];
-        [buildPhase setShellScript: shellScript];
+        BuildPhase buildPhase = [(BuildPhase)[buildPhaseClass alloc] initWithName:@"Run SwiftLint"];
+        [buildPhase setShowEnvVarsInLog:showEnvVarsInLog];
+        [buildPhase setShellPath:@"/bin/sh"];
+        [buildPhase setShellScript:shellScript];
         NSMutableArray *newResult = [result mutableCopy];
         [newResult addObject:buildPhase];
         return newResult;
@@ -70,12 +70,12 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
 }
 
 /// replacement for -[PBXTarget createDependencyGraphSnapshotWithTargetBuildParameters:];
-- (id)_ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters: (id)arg
+- (id)_ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters:(id)arg
 {
     _ExtraBuildPhase_in_createDependencyGraphSnapshot = true;
     
     // call original method
-    id result = [self _ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters: arg];
+    id result = [self _ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters:arg];
     
     _ExtraBuildPhase_in_createDependencyGraphSnapshot = false;
     return result;
@@ -98,14 +98,14 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
         SEL targetSelector1 = @selector(buildPhases);
         SEL targetSelector2 = @selector(createDependencyGraphSnapshotWithTargetBuildParameters:);
         
-        if ([self addMyInstanceMethodBySelector: mySelector1 toClass: target] &&
-            [self addMyInstanceMethodBySelector: mySelector2 toClass: target]) {
-            [self exchangeMethodImplementationsBetweenSelector: mySelector1
-                                                   andSelector: targetSelector1
-                                                       ofClass: target];
-            [self exchangeMethodImplementationsBetweenSelector: mySelector2
-                                                   andSelector: targetSelector2
-                                                       ofClass: target];
+        if ([self addMyInstanceMethodBySelector:mySelector1 toClass:target] &&
+            [self addMyInstanceMethodBySelector:mySelector2 toClass:target]) {
+            [self exchangeMethodImplementationsBetweenSelector:mySelector1
+                                                   andSelector:targetSelector1
+                                                       ofClass:target];
+            [self exchangeMethodImplementationsBetweenSelector:mySelector2
+                                                   andSelector:targetSelector2
+                                                       ofClass:target];
         }
     });
 }
