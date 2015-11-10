@@ -31,14 +31,16 @@
 #import "PBXShellScriptBuildPhase.h"
 #import "PBXTarget.h"
 
-@implementation NSObject (ExtraBuildPhase)
+@implementation ExtraBuildPhase(SwizzlingTargetMethods)
 
 static bool _ExtraBuildPhase_in_createDependencyGraphSnapshot = false;
 
 typedef id<PBXShellScriptBuildPhase> BuildPhase;
 
+/// replacement for -[PBXTarget buildPhases];
 - (NSArray*)_ExtraBuildPhase_buildPhases
 {
+    // call original method
     NSArray *result = [self _ExtraBuildPhase_buildPhases];
     
     if (_ExtraBuildPhase_in_createDependencyGraphSnapshot) {
@@ -67,10 +69,14 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     return result;
 }
 
+/// replacement for -[PBXTarget createDependencyGraphSnapshotWithTargetBuildParameters:];
 - (id)_ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters: (id)arg
 {
     _ExtraBuildPhase_in_createDependencyGraphSnapshot = true;
+    
+    // call original method
     id result = [self _ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters: arg];
+    
     _ExtraBuildPhase_in_createDependencyGraphSnapshot = false;
     return result;
 }
@@ -81,15 +87,51 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
 
 + (void)pluginDidLoad:(NSBundle *)plugin
 {
-    Class from = objc_getClass("PBXTarget");
-    Class to = objc_getClass("NSObject");
-    SEL fromSEL, toSEL;
-    fromSEL = @selector(buildPhases);
-    toSEL = @selector(_ExtraBuildPhase_buildPhases);
-    method_exchangeImplementations(class_getInstanceMethod(from, fromSEL), class_getInstanceMethod(to, toSEL));
-    fromSEL = @selector(createDependencyGraphSnapshotWithTargetBuildParameters:);
-    toSEL = @selector(_ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters:);
-    method_exchangeImplementations(class_getInstanceMethod(from, fromSEL), class_getInstanceMethod(to, toSEL));
+    // When multiple instances of plugin are loaded, multiple call of this method may happen.
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class target = objc_getClass("PBXTarget");
+        
+        SEL mySelector1 = @selector(_ExtraBuildPhase_buildPhases);
+        SEL mySelector2 = @selector(_ExtraBuildPhase_createDependencyGraphSnapshotWithTargetBuildParameters:);
+        
+        SEL targetSelector1 = @selector(buildPhases);
+        SEL targetSelector2 = @selector(createDependencyGraphSnapshotWithTargetBuildParameters:);
+        
+        if ([self addMyInstanceMethodBySelector: mySelector1 toClass: target] &&
+            [self addMyInstanceMethodBySelector: mySelector2 toClass: target]) {
+            [self exchangeMethodImplementationsBetweenSelector: mySelector1
+                                                   andSelector: targetSelector1
+                                                       ofClass: target];
+            [self exchangeMethodImplementationsBetweenSelector: mySelector2
+                                                   andSelector: targetSelector2
+                                                       ofClass: target];
+        }
+    });
+}
+
++ (BOOL)addMyInstanceMethodBySelector:(SEL)aSelector toClass:(Class)aClass
+{
+    // check existence before adding
+    Method method = class_getInstanceMethod(aClass, aSelector);
+    if (method) {
+        NSLog(@"#ExtraBuildPhase: target method is already added. Are multiple ExtraBuildPhase.xcplugin installed?");
+        return NO;
+    }
+    
+    Method myMethod = class_getInstanceMethod([self class], aSelector);
+    IMP imp = method_getImplementation(myMethod);
+    const char *types = method_getTypeEncoding(myMethod);
+    return class_addMethod(aClass, aSelector, imp, types);
+}
+
++ (void)exchangeMethodImplementationsBetweenSelector:(SEL)selector1
+                                         andSelector:(SEL)selector2
+                                             ofClass:(Class)aClass
+{
+    Method method1 = class_getInstanceMethod(aClass, selector1);
+    Method method2 = class_getInstanceMethod(aClass, selector2);
+    method_exchangeImplementations(method1, method2);
 }
 
 @end
