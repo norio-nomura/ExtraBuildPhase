@@ -9,6 +9,13 @@ ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https
 
 ## Installation
 
+### Use Homebrew-Cask
+1. Install [Homebrew-Cask](http://caskroom.io)
+2. run `brew cask install extrabuildphase` on CLI
+3. Restart Xcode
+
+*This method installs the plug-in at `/Library/Application Support/Developer/Shared/Xcode/Plug-ins`*
+
 ### Use pre-built plugin
 1. Download [ExtraBuildPhase.xcplugin-0.2.zip](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.2/ExtraBuildPhase.xcplugin-0.2.zip)
 2. Unzip it
@@ -18,6 +25,8 @@ ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https
 ### Build by yourself
 1. Build the Xcode project
 2. Restart Xcode
+
+*This method installs the plug-in at `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`*
 
 ## Configuration
 ```sh
