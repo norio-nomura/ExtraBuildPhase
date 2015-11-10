@@ -38,10 +38,10 @@ static bool _ExtraBuildPhase_in_createDependencyGraphSnapshot = false;
 typedef id<PBXShellScriptBuildPhase> BuildPhase;
 
 /// replacement for -[PBXTarget buildPhases];
-- (NSArray*)_ExtraBuildPhase_buildPhases
+- (NSArray<id<PBXBuildPhase>>*)_ExtraBuildPhase_buildPhases
 {
     // call original method
-    NSArray *result = [self _ExtraBuildPhase_buildPhases];
+    NSArray<id<PBXBuildPhase>> *result = [self _ExtraBuildPhase_buildPhases];
     
     if (_ExtraBuildPhase_in_createDependencyGraphSnapshot) {
         NSString *identifier = [[NSBundle bundleForClass:[ExtraBuildPhase class]]bundleIdentifier];
@@ -61,6 +61,24 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
         [buildPhase setShowEnvVarsInLog:showEnvVarsInLog];
         [buildPhase setShellPath:@"/bin/sh"];
         [buildPhase setShellScript:shellScript];
+        
+        Class SourcesBuildPhaseClass = objc_getClass("PBXSourcesBuildPhase");
+        NSMutableArray<NSString *> *inputPaths = [[NSMutableArray<NSString *> alloc]init];
+        for (id<PBXBuildPhase> buildPhase in result) {
+            if ([buildPhase isKindOfClass:SourcesBuildPhaseClass]) {
+                for (id<PBXBuildFile> buildFile in [buildPhase buildFiles]) {
+                    NSString *path = [[buildFile fileReference]projectRelativePath];
+                    if (path) {
+                        [inputPaths addObject:[@"$(SRCROOT)/" stringByAppendingString:path]];
+                    }
+                }
+            }
+        }
+        
+        if ([inputPaths count]) {
+            [buildPhase setInputPaths:inputPaths];
+        }
+        
         NSMutableArray *newResult = [result mutableCopy];
         [newResult addObject:buildPhase];
         return newResult;
