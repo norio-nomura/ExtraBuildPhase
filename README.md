@@ -41,6 +41,9 @@ exit 0 # ignore result of swiftlint
 
 # Show environment variables in build log
 defaults write io.github.norio-nomura.ExtraBuildPhase showEnvVarsInLog -bool true
+
+# Run shell script not only on Xcode, but also xcodebuild.
+defaults write io.github.norio-nomura.ExtraBuildPhase isNotLimitedToXcode -bool true
 ```
 
 ## Author
