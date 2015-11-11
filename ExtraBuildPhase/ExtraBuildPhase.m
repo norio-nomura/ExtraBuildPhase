@@ -48,8 +48,13 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     }
     
     NSString *identifier = [[NSBundle bundleForClass:[ExtraBuildPhase class]]bundleIdentifier];
-    
     NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:identifier];
+    
+    NSString *processName = [[NSProcessInfo processInfo]processName];
+    if (![processName isEqual:@"Xcode"] && ![defaults boolForKey:@"isNotLimitedToXcode"]) {
+        return result;
+    }
+    
     NSString *shellScript = [defaults stringForKey:@"shellScript"];
     if (!shellScript) {
         shellScript = @"if which swiftlint >/dev/null; then\n"
