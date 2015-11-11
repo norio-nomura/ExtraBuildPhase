@@ -43,48 +43,48 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     // call original method
     NSArray<id<PBXBuildPhase>> *result = [self _ExtraBuildPhase_buildPhases];
     
-    if (_ExtraBuildPhase_in_createDependencyGraphSnapshot) {
-        NSString *identifier = [[NSBundle bundleForClass:[ExtraBuildPhase class]]bundleIdentifier];
-        
-        NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:identifier];
-        NSString *shellScript = [defaults stringForKey:@"shellScript"];
-        if (!shellScript) {
-            shellScript = @"if which swiftlint >/dev/null; then\n"
-            "    swiftlint 2>/dev/null\n"
-            "fi\n"
-            "exit 0 # ignore result of swiftlint";
-        }
-        BOOL showEnvVarsInLog = [defaults boolForKey:@"showEnvVarsInLog"];
-        
-        Class buildPhaseClass = objc_getClass("PBXShellScriptBuildPhase");
-        BuildPhase buildPhase = [(BuildPhase)[buildPhaseClass alloc] initWithName:@"Run SwiftLint"];
-        [buildPhase setShowEnvVarsInLog:showEnvVarsInLog];
-        [buildPhase setShellPath:@"/bin/sh"];
-        [buildPhase setShellScript:shellScript];
-        
-        Class SourcesBuildPhaseClass = objc_getClass("PBXSourcesBuildPhase");
-        NSMutableArray<NSString *> *inputPaths = [[NSMutableArray<NSString *> alloc]init];
-        for (id<PBXBuildPhase> buildPhase in result) {
-            if ([buildPhase isKindOfClass:SourcesBuildPhaseClass]) {
-                for (id<PBXBuildFile> buildFile in [buildPhase buildFiles]) {
-                    NSString *path = [[buildFile fileReference]projectRelativePath];
-                    if (path) {
-                        [inputPaths addObject:[@"$(SRCROOT)/" stringByAppendingString:path]];
-                    }
+    if (!_ExtraBuildPhase_in_createDependencyGraphSnapshot) {
+        return result;
+    }
+    
+    NSString *identifier = [[NSBundle bundleForClass:[ExtraBuildPhase class]]bundleIdentifier];
+    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:identifier];
+    NSString *shellScript = [defaults stringForKey:@"shellScript"];
+    if (!shellScript) {
+        shellScript = @"if which swiftlint >/dev/null; then\n"
+        "    swiftlint 2>/dev/null\n"
+        "fi\n"
+        "exit 0 # ignore result of swiftlint";
+    }
+    BOOL showEnvVarsInLog = [defaults boolForKey:@"showEnvVarsInLog"];
+    
+    Class buildPhaseClass = objc_getClass("PBXShellScriptBuildPhase");
+    BuildPhase buildPhase = [(BuildPhase)[buildPhaseClass alloc] initWithName:@"Run SwiftLint"];
+    [buildPhase setShowEnvVarsInLog:showEnvVarsInLog];
+    [buildPhase setShellPath:@"/bin/sh"];
+    [buildPhase setShellScript:shellScript];
+    
+    Class SourcesBuildPhaseClass = objc_getClass("PBXSourcesBuildPhase");
+    NSMutableArray<NSString *> *inputPaths = [[NSMutableArray<NSString *> alloc]init];
+    for (id<PBXBuildPhase> buildPhase in result) {
+        if ([buildPhase isKindOfClass:SourcesBuildPhaseClass]) {
+            for (id<PBXBuildFile> buildFile in [buildPhase buildFiles]) {
+                NSString *path = [[buildFile fileReference]projectRelativePath];
+                if (path) {
+                    [inputPaths addObject:[@"$(SRCROOT)/" stringByAppendingString:path]];
                 }
             }
         }
-        
-        if ([inputPaths count]) {
-            [buildPhase setInputPaths:inputPaths];
-        }
-        
-        NSMutableArray *newResult = [result mutableCopy];
-        [newResult addObject:buildPhase];
-        return newResult;
     }
-
-    return result;
+    
+    if ([inputPaths count]) {
+        [buildPhase setInputPaths:inputPaths];
+    }
+    
+    NSMutableArray *newResult = [result mutableCopy];
+    [newResult addObject:buildPhase];
+    return newResult;
 }
 
 /// replacement for -[PBXTarget createDependencyGraphSnapshotWithTargetBuildParameters:];
