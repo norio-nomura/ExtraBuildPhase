@@ -12,6 +12,11 @@
 
 /* Begin PBXFileReference section */
 		6C233E1C1BEF24AB00D7C9D2 /* PBXTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXTarget.h; sourceTree = "<group>"; };
+		6C777D4A1BF2306600DA25D8 /* PBXSourcesBuildPhase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXSourcesBuildPhase.h; sourceTree = "<group>"; };
+		6C777D4B1BF230C000DA25D8 /* PBXBuildPhase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXBuildPhase.h; sourceTree = "<group>"; };
+		6C777D4C1BF2318100DA25D8 /* PBXBuildFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXBuildFile.h; sourceTree = "<group>"; };
+		6C777D541BF2349100DA25D8 /* PBXFileReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXFileReference.h; sourceTree = "<group>"; };
+		6C777D551BF2366400DA25D8 /* PBXReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBXReference.h; sourceTree = "<group>"; };
 		6CEA7CA51BEDD37300E0CE79 /* ExtraBuildPhase.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExtraBuildPhase.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CEA7CA81BEDD37300E0CE79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CEA7CAE1BEDD4B800E0CE79 /* ExtraBuildPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraBuildPhase.h; sourceTree = "<group>"; };
@@ -56,7 +61,12 @@
 				6CEA7CA81BEDD37300E0CE79 /* Info.plist */,
 				6CEA7CAE1BEDD4B800E0CE79 /* ExtraBuildPhase.h */,
 				6CEA7CAF1BEDD4B800E0CE79 /* ExtraBuildPhase.m */,
+				6C777D4C1BF2318100DA25D8 /* PBXBuildFile.h */,
+				6C777D4B1BF230C000DA25D8 /* PBXBuildPhase.h */,
+				6C777D541BF2349100DA25D8 /* PBXFileReference.h */,
+				6C777D551BF2366400DA25D8 /* PBXReference.h */,
 				6CF50AB91BEF148700604C02 /* PBXShellScriptBuildPhase.h */,
+				6C777D4A1BF2306600DA25D8 /* PBXSourcesBuildPhase.h */,
 				6C233E1C1BEF24AB00D7C9D2 /* PBXTarget.h */,
 			);
 			path = ExtraBuildPhase;

@@ -1,8 +1,8 @@
 //
-//  PBXShellScriptBuildPhase.h
+//  PBXSourcesBuildPhase.h
 //  ExtraBuildPhase
 //
-//  Created by 野村 憲男 on 11/8/15.
+//  Created by 野村 憲男 on 11/10/15.
 //
 //  Copyright (c) 2015 Norio Nomura
 //
@@ -25,25 +25,12 @@
 //  THE SOFTWARE.
 //
 
-#ifndef PBXShellScriptBuildPhase_h
-#define PBXShellScriptBuildPhase_h
+#ifndef PBXSourcesBuildPhase_h
+#define PBXSourcesBuildPhase_h
 
 #import "PBXBuildPhase.h"
 
-@protocol PBXShellScriptBuildPhase <PBXBuildPhase>
-
-- (id)initWithName:(NSString*)name;
-- (void)setShowEnvVarsInLog:(BOOL)arg1;
-- (BOOL)showEnvVarsInLog;
-- (void)setOutputPaths:(NSArray<NSString*>*)paths;
-- (id)outputPaths;
-- (void)setInputPaths:(NSArray<NSString*>*)paths;
-- (id)inputPaths;
-- (void)setShellScript:(NSString*)script;
-- (id)shellScript;
-- (void)setShellPath:(NSString*)path;
-- (id)shellPath;
-
+@protocol PBXSourcesBuildPhase <PBXBuildPhase>
 @end
 
-#endif /* PBXShellScriptBuildPhase_h */
+#endif /* PBXSourcesBuildPhase_h */
