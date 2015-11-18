@@ -1,7 +1,7 @@
 # ExtraBuildPhase
-[![MIT Lincese](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https://github.com/realm/SwiftLint), but is customizable by shell script.
+ExtraBuildPhase is a plugin for Xcode that was created to run [SwiftLint](https://github.com/realm/SwiftLint), but is customizable by shell script.
 
 ## Requirements
 - Xcode 7.1 or later
@@ -9,24 +9,24 @@ ExtraBuildPhase is a plugin for Xcode that created for running [SwiftLint](https
 
 ## Installation
 
-Xcode Plug-ins Locations are following:
+Xcode Plug-ins Locations are the following:
 - Local System: `/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
 - User Home: `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
 
 ### Using Installers
 - [Homebrew-Cask](http://caskroom.io) (*User Home*): `brew cask install extrabuildphase`  
 - [Alcatraz](http://alcatraz.io) (*User Home*)
-- Installer package (Local System): [ExtraBuildPhase-0.3.1.pkg](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.3.1/ExtraBuildPhase-0.3.1.pkg)
+- Installer package (*Local System*): [ExtraBuildPhase-0.3.1.pkg](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.3.1/ExtraBuildPhase-0.3.1.pkg)
 
-*Plugin location installed by Homebrew-Cask has been changed from Local System to User Home. If you have installed 0.3 or earlier by Homebrew-Cask, Please remove `ExtraBuildPhase.xcplugin` manually from Local System.*
+*Note: Homebrew-Casks's install location has changed from Local System to User Home. If you have installed 0.3 or earlier with Homebrew-Cask, please remove `ExtraBuildPhase.xcplugin` manually from Local System.*
 
 ### Manual Install
 1. Download [ExtraBuildPhase.xcplugin-0.3.1.zip](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.3.1/ExtraBuildPhase.xcplugin-0.3.1.zip)
 2. Unzip it
-3. Copy `ExtraBuildPhase.xcplugin` to one of Xcode Plug-ins Location
+3. Copy `ExtraBuildPhase.xcplugin` to either Xcode Plug-ins locations.
 
 ### Build By Yourself
-1. Building the project by Xcode will install the plugin. (to User Home)
+1. Building the project with Xcode will install the plugin. (to User Home)
 
 Restart Xcode after installing
 
