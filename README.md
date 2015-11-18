@@ -14,12 +14,12 @@ Xcode Plug-ins Locations are following:
 - User Home: `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`
 
 ### Using Installers
-- Installer package (Local System): [ExtraBuildPhase-0.3.pkg](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.2/ExtraBuildPhase-0.3.pkg)
+- Installer package (Local System): [ExtraBuildPhase-0.3.pkg](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.3/ExtraBuildPhase-0.3.pkg)
 - [Homebrew-Cask](http://caskroom.io) (Local System): `brew cask install extrabuildphase`
 - [Alcatraz](http://alcatraz.io) (*User Home*)
 
 ### Manual Install
-1. Download [ExtraBuildPhase.xcplugin-0.3.zip](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.2/ExtraBuildPhase.xcplugin-0.3.zip)
+1. Download [ExtraBuildPhase.xcplugin-0.3.zip](https://github.com/norio-nomura/ExtraBuildPhase/releases/download/0.3/ExtraBuildPhase.xcplugin-0.3.zip)
 2. Unzip it
 3. Copy `ExtraBuildPhase.xcplugin` to one of Xcode Plug-ins Location
 
