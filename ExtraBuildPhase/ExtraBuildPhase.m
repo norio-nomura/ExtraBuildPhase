@@ -58,7 +58,8 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     NSString *shellScript = [defaults stringForKey:@"shellScript"];
     if (!shellScript) {
         shellScript = @"if which swiftlint >/dev/null; then\n"
-        "    swiftlint lint --use-script-input-files 2>/dev/null\n"
+        "    [ -f .swiftlint.yml ] && CONFIG=\".swiftlint.yml\" || CONFIG=\"$HOME/.swiftlint.yml\"\n"
+        "    swiftlint lint --quiet --use-script-input-files --config $CONFIG\n"
         "fi\n"
         "exit 0 # ignore result of swiftlint";
     }
