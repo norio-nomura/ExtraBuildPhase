@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.2</string>
+	<string>0.3.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -25,9 +25,10 @@
 		<string>7265231C-39B4-402C-89E1-16167C4CC990</string>
 		<string>9AFF134A-08DC-4096-8CEE-62A4BB123046</string>
 		<string>F41BD31E-2683-44B8-AE7F-5F09E919790E</string>
+		<string>E71C2CFE-BFD8-4044-8F06-00AE685A406C</string>
 	</array>
 	<key>NSHumanReadableCopyright</key>
-	<string>ExtraBuildPhase, ©2015 Norio Nomura</string>
+	<string>ExtraBuildPhase, ©2016 Norio Nomura</string>
 	<key>NSPrincipalClass</key>
 	<string>ExtraBuildPhase</string>
 	<key>XC4Compatible</key>

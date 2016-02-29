@@ -4,7 +4,7 @@
 //
 //  Created by 野村 憲男 on 11/7/15.
 //
-//  Copyright (c) 2015 Norio Nomura
+//  Copyright (c) 2016 Norio Nomura
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,8 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     NSString *shellScript = [defaults stringForKey:@"shellScript"];
     if (!shellScript) {
         shellScript = @"if which swiftlint >/dev/null; then\n"
-        "    swiftlint lint --use-script-input-files 2>/dev/null\n"
+        "    [ -f .swiftlint.yml ] && CONFIG=\".swiftlint.yml\" || CONFIG=\"$HOME/.swiftlint.yml\"\n"
+        "    swiftlint lint --quiet --use-script-input-files --config $CONFIG\n"
         "fi\n"
         "exit 0 # ignore result of swiftlint";
     }
