@@ -36,13 +36,13 @@
 - (void)setShowEnvVarsInLog:(BOOL)arg1;
 - (BOOL)showEnvVarsInLog;
 - (void)setOutputPaths:(NSArray<NSString*>*)paths;
-- (id)outputPaths;
+- (NSArray<NSString*>*)outputPaths;
 - (void)setInputPaths:(NSArray<NSString*>*)paths;
-- (id)inputPaths;
+- (NSArray<NSString*>*)inputPaths;
 - (void)setShellScript:(NSString*)script;
-- (id)shellScript;
+- (NSString*)shellScript;
 - (void)setShellPath:(NSString*)path;
-- (id)shellPath;
+- (NSString*)shellPath;
 
 @end
 
