@@ -58,19 +58,24 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
     NSString *shellScript = [defaults stringForKey:@"shellScript"];
     if (!shellScript) {
         shellScript = @"if which swiftlint >/dev/null; then\n"
-        "    [ -f .swiftlint.yml ] && CONFIG=\".swiftlint.yml\" || CONFIG=\"$HOME/.swiftlint.yml\"\n"
-        "    swiftlint lint --quiet --use-script-input-files --config $CONFIG\n"
+        "    if [ -f .swiftlint.yml ]; then\n"
+        "        CONFIG=\"--config .swiftlint.yml\"\n"
+        "    elif [ -f $HOME/.swiftlint.yml ]; then\n"
+        "        CONFIG=\"--config $HOME/.swiftlint.yml\"\n"
+        "    fi\n"
+        "    swiftlint lint --quiet --use-script-input-files $CONFIG\n"
         "fi\n"
-        "exit 0 # ignore result of swiftlint";
+        "exit 0 # ignore result of swiftlint\n";
     }
     BOOL showEnvVarsInLog = [defaults boolForKey:@"showEnvVarsInLog"];
-    
-    Class buildPhaseClass = objc_getClass("PBXShellScriptBuildPhase");
-    BuildPhase buildPhase = [(BuildPhase)[buildPhaseClass alloc] initWithName:@"Run SwiftLint"];
-    [buildPhase setShowEnvVarsInLog:showEnvVarsInLog];
-    [buildPhase setShellPath:@"/bin/sh"];
-    [buildPhase setShellScript:shellScript];
-    
+    BOOL shellScriptRunsSwiftLint = [shellScript containsString:@"if which swiftlint"];
+
+    Class shellScriptBuildPhaseClass = objc_getClass("PBXShellScriptBuildPhase");
+    BuildPhase extraBuildPhase = [(BuildPhase)[shellScriptBuildPhaseClass alloc] initWithName:@"Run SwiftLint"];
+    [extraBuildPhase setShowEnvVarsInLog:showEnvVarsInLog];
+    [extraBuildPhase setShellPath:@"/bin/sh"];
+    [extraBuildPhase setShellScript:shellScript];
+
     Class SourcesBuildPhaseClass = objc_getClass("PBXSourcesBuildPhase");
     NSMutableArray<NSString *> *inputPaths = [[NSMutableArray<NSString *> alloc]init];
     for (id<PBXBuildPhase> buildPhase in result) {
@@ -81,15 +86,21 @@ typedef id<PBXShellScriptBuildPhase> BuildPhase;
                     [inputPaths addObject:[@"$(SRCROOT)/" stringByAppendingString:path]];
                 }
             }
+        } else if (shellScriptRunsSwiftLint && [buildPhase isKindOfClass:shellScriptBuildPhaseClass]) {
+            BuildPhase anotherShellScriptBuildPhase = (BuildPhase)buildPhase;
+            NSString *shellScript = [anotherShellScriptBuildPhase shellScript];
+            if ([shellScript containsString:@"if which swiftlint"]) {
+                return result;
+            }
         }
     }
     
     if ([inputPaths count]) {
-        [buildPhase setInputPaths:inputPaths];
+        [extraBuildPhase setInputPaths:inputPaths];
     }
     
     NSMutableArray *newResult = [result mutableCopy];
-    [newResult addObject:buildPhase];
+    [newResult addObject:extraBuildPhase];
     return newResult;
 }
 

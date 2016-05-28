@@ -35,8 +35,12 @@ Restart Xcode after installing
 # Change shell script
 defaults write io.github.norio-nomura.ExtraBuildPhase shellScript -string '
 if which swiftlint >/dev/null; then
-    [ -f .swiftlint.yml ] && CONFIG=".swiftlint.yml" || CONFIG="$HOME/.swiftlint.yml"
-    swiftlint lint --quiet --use-script-input-files --config $CONFIG
+    if [ -f .swiftlint.yml ]; then
+        CONFIG="--config .swiftlint.yml"
+    elif [ -f $HOME/.swiftlint.yml ]; then
+        CONFIG="--config $HOME/.swiftlint.yml"
+    fi
+    swiftlint lint --quiet --use-script-input-files $CONFIG
 fi
 exit 0 # ignore result of swiftlint
 '
